@@ -4,3 +4,4 @@ ibapi~=9.81.1.post1
 jupyter
 kaleido
 plotly~=5.6.0
+waitress
