@@ -10,6 +10,8 @@ import pandas as pd
 # Make a Dash app!
 app = dash.Dash(__name__)
 
+server = app.server
+
 # Define the layout.
 app.layout = html.Div([
 
@@ -25,55 +27,55 @@ app.layout = html.Div([
             "MIDPOINT",
             id='what-to-show'
         ),
-        style = {'width': '365px'}
+        style={'width': '365px'}
     ),
     html.H4("Select value for endDateTime:"),
     html.Div(
-        children = [
+        children=[
             html.P("You may select a specific endDateTime for the call to " + \
                    "fetch_historical_data. If any of the below is left empty, " + \
                    "the current present moment will be used.")
         ],
-        style = {'width': '365px'}
+        style={'width': '365px'}
     ),
     html.Div(
-        children = [
+        children=[
             html.Div(
-                children = [
+                children=[
                     html.Label('Date:'),
                     dcc.DatePickerSingle(id='edt-date')
                 ],
-                style = {
+                style={
                     'display': 'inline-block',
                     'margin-right': '20px',
                 }
             ),
             html.Div(
-                children = [
+                children=[
                     html.Label('Hour:'),
                     dcc.Dropdown(list(range(24)), id='edt-hour'),
                 ],
-                style = {
+                style={
                     'display': 'inline-block',
                     'padding-right': '5px'
                 }
             ),
             html.Div(
-                children = [
+                children=[
                     html.Label('Minute:'),
                     dcc.Dropdown(list(range(60)), id='edt-minute'),
                 ],
-                style = {
+                style={
                     'display': 'inline-block',
                     'padding-right': '5px'
                 }
             ),
             html.Div(
-                children = [
+                children=[
                     html.Label('Second:'),
                     dcc.Dropdown(list(range(60)), id='edt-second'),
                 ],
-                style = {'display': 'inline-block'}
+                style={'display': 'inline-block'}
             )
         ]
     ),
@@ -129,9 +131,10 @@ app.layout = html.Div([
 
 ])
 
+
 # Callback for what to do when submit-button is pressed
 @app.callback(
-    [ # there's more than one output here, so you have to use square brackets to pass it in as an array.
+    [  # there's more than one output here, so you have to use square brackets to pass it in as an array.
         Output(component_id='currency-output', component_property='children'),
         Output(component_id='candlestick-graph', component_property='figure')
     ],
@@ -158,9 +161,9 @@ def update_candlestick_graph(n_clicks, currency_string, what_to_show,
     # First things first -- what currency pair history do you want to fetch?
     # Define it as a contract object!
     contract = Contract()
-    contract.symbol   = currency_string.split(".")[0]
-    contract.secType  = 'CASH'
-    contract.exchange = 'IDEALPRO' # 'IDEALPRO' is the currency exchange.
+    contract.symbol = currency_string.split(".")[0]
+    contract.secType = 'CASH'
+    contract.exchange = 'IDEALPRO'  # 'IDEALPRO' is the currency exchange.
     contract.currency = currency_string.split(".")[1]
 
     ############################################################################
@@ -178,10 +181,10 @@ def update_candlestick_graph(n_clicks, currency_string, what_to_show,
     cph = fetch_historical_data(
         contract=contract,
         endDateTime='',
-        durationStr='30 D',       # <-- make a reactive input
+        durationStr='30 D',  # <-- make a reactive input
         barSizeSetting='1 hour',  # <-- make a reactive input
         whatToShow=what_to_show,
-        useRTH=True               # <-- make a reactive input
+        useRTH=True  # <-- make a reactive input
     )
     # Make the candlestick figure
     fig = go.Figure(
@@ -226,6 +229,7 @@ def update_candlestick_graph(n_clicks, currency_string, what_to_show,
     # Return your updated text to currency-output, and the figure to candlestick-graph outputs
     return ('Submitted query for ' + currency_string), fig
 
+
 # Callback for what to do when trade-button is pressed
 @app.callback(
     # We're going to output the result to trade-output
@@ -238,7 +242,7 @@ def update_candlestick_graph(n_clicks, currency_string, what_to_show,
     # We DON'T want to start executing trades just because n_clicks was initialized to 0!!!
     prevent_initial_call=True
 )
-def trade(n_clicks, action, trade_currency, trade_amt): # Still don't use n_clicks, but we need the dependency
+def trade(n_clicks, action, trade_currency, trade_amt):  # Still don't use n_clicks, but we need the dependency
 
     # Make the message that we want to send back to trade-output
     msg = action + ' ' + trade_amt + ' ' + trade_currency
@@ -253,6 +257,7 @@ def trade(n_clicks, action, trade_currency, trade_amt): # Still don't use n_clic
     # Return the message, which goes to the trade-output div's "children" attribute.
     return msg
 
+
 # Run it!
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host='127.0.0.1', port=3001, debug=True)
