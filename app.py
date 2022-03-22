@@ -9,13 +9,17 @@ import pandas as pd
 
 # Make a Dash app!
 app = dash.Dash(__name__)
-
 server = app.server
+
+# This favicon thing is bugging me
+app._favicon = ("assets/favicon.ico")
+app.title = 'Pure Alpha'
 
 # Define the layout.
 app.layout = html.Div([
 
     # Section title
+    html.H1("Welcome to Pure Alpha"),
     html.H3("Section 1: Fetch & Display exchange rate historical data"),
     html.H4("Select value for whatToShow:"),
     html.Div(
@@ -97,7 +101,7 @@ app.layout = html.Div([
             id='currency-input', value='AUD.CAD', type='text'
         )],
         # Style it so that the submit button appears beside the input.
-        style={'display': 'inline-block', 'padding-top': '5px'}
+        style={'display': 'inline-block', 'padding-top': '5px', 'color': 'white'}
     ),
     # Submit button
     html.Button('Submit', id='submit-button', n_clicks=0),
@@ -105,12 +109,18 @@ app.layout = html.Div([
     html.Br(),
     # Div to hold the initial instructions and the updated info once submit is pressed
     html.Div(id='currency-output', children='Enter a currency code and press submit'),
+    # Finishing homework 3, adding a spinner to candlestick graph
+    dcc.Loading(
+        id="loading-1",
+        type="circle",
+        children=html.Div([dcc.Graph(id="candlestick-graph")])
+    ),
     # Div to hold the candlestick graph
-    html.Div([dcc.Graph(id='candlestick-graph')]),
+    # html.Div([dcc.Graph(id='candlestick-graph')]),
     # Another line break
     html.Br(),
     # Section title
-    html.H6("Make a Trade"),
+    html.H3("Make a Trade"),
     # Div to confirm what trade was made
     html.Div(id='trade-output'),
     # Radio items to select buy or sell
@@ -130,7 +140,6 @@ app.layout = html.Div([
     html.Button('Trade', id='trade-button', n_clicks=0)
 
 ])
-
 
 # Callback for what to do when submit-button is pressed
 @app.callback(
