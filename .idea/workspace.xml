@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c24c9755-1999-4659-8fea-dcbdc3c0af02" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/homework_3-1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homework_3-1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c24c9755-1999-4659-8fea-dcbdc3c0af02" name="Changes" comment="ye">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serve_hw3.bat" beforeDir="false" afterPath="$PROJECT_DIR$/serve_hw3.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +10,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="michaelcutro &lt;mikercutro@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -71,8 +73,18 @@
       <updated>1647920636996</updated>
       <workItem from="1647920641374" duration="1006000" />
       <workItem from="1647922038844" duration="13405000" />
-      <workItem from="1647978495506" duration="133000" />
+      <workItem from="1647978495506" duration="942000" />
+      <workItem from="1647979681619" duration="594000" />
+      <workItem from="1648411373118" duration="627000" />
     </task>
+    <task id="LOCAL-00001" summary="ye">
+      <created>1647978803445</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647978803445</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,8 +101,12 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ye" />
+    <option name="LAST_COMMIT_MESSAGE" value="ye" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/homework_3_1$homework_3_1.coverage" NAME="homework_3.1 Coverage Results" MODIFIED="1647905888437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/homework_3_1$app.coverage" NAME="app Coverage Results" MODIFIED="1647973293143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/homework_3_1$app.coverage" NAME="app Coverage Results" MODIFIED="1648411867160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
